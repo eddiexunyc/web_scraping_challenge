@@ -19,11 +19,9 @@ def scrape():
     browser = init_browser()
     browser.visit(mar_url)
     soup = BeautifulSoup(browser.html, "html.parser")
-    new_article = soup.find_all('div', class_ = "list_text")
 
-    for new in new_article[:1]:
-        new_title = new.find('div', class_ = 'content_title').text
-        new_para = new.find('div', class_ = 'article_teaser_body').text
+    new_title = soup.find_all('div', class_ = 'content_title')[1].text
+    new_para = soup.find_all('div', class_ = 'article_teaser_body')[1].text
     
     #mars image URL page to be scraped
     browser.visit(mar_pic_url)
